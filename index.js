@@ -1,19 +1,34 @@
 const express = require("express");
+const cors = require("cors");
+const axios = require("axios");
+const dns = require("dns");
+
+dns.setServers(["8.8.8.8", "1.1.1.1"]);
+
+require("dotenv").config();
+
+const connectDb = require("./config/db");
+
+const userRouter = require("./routes/productRouter");
 
 const app = express();
 
-const productRoutes = require("./routes/productRoutes");
+app.use(cors());
 
-// Middleware
 app.use(express.json());
 
-// Routes
-app.use("/products", productRoutes);
+// Database Connection
+connectDb();
 
-// PORT
-const PORT = process.env.PORT || 5000;
+// Routes
+app.use("/", userRouter);
+
+// Home Route
+app.get("/", (req, res) => {
+    res.send("<h1>Backend Server Running</h1>");
+});
 
 // Server
-app.listen(PORT, () => {
-  console.log(`Server running on port ${PORT}`);
+app.listen(process.env.PORT, () => {
+    console.log(`Server running on port ${process.env.PORT}`);
 });
