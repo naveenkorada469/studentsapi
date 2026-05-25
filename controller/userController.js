@@ -1,17 +1,13 @@
 const axios = require("axios");
 
+
 // GET ALL PRODUCTS
 const getProducts = async (req, res) => {
+
   try {
 
     const response = await axios.get(
-      "https://dummyjson.com/products",
-      {
-        headers: {
-          Accept: "application/json",
-          "User-Agent": "Mozilla/5.0",
-        },
-      }
+      "https://dummyjson.com/products"
     );
 
     res.status(200).json(response.data);
@@ -24,10 +20,13 @@ const getProducts = async (req, res) => {
     });
 
   }
+
 };
+
 
 // GET SINGLE PRODUCT
 const getProductById = async (req, res) => {
+
   try {
 
     const response = await axios.get(
@@ -44,10 +43,13 @@ const getProductById = async (req, res) => {
     });
 
   }
+
 };
+
 
 // CREATE PRODUCT
 const createProduct = async (req, res) => {
+
   try {
 
     const response = await axios.post(
@@ -73,10 +75,13 @@ const createProduct = async (req, res) => {
     });
 
   }
+
 };
+
 
 // UPDATE PRODUCT
 const updateProduct = async (req, res) => {
+
   try {
 
     const response = await axios.put(
@@ -102,10 +107,13 @@ const updateProduct = async (req, res) => {
     });
 
   }
+
 };
+
 
 // DELETE PRODUCT
 const deleteProduct = async (req, res) => {
+
   try {
 
     const response = await axios.delete(
@@ -125,7 +133,9 @@ const deleteProduct = async (req, res) => {
     });
 
   }
+
 };
+
 
 module.exports = {
   getProducts,
