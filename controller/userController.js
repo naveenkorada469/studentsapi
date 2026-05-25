@@ -3,47 +3,59 @@ const axios = require("axios");
 // GET ALL PRODUCTS
 const getProducts = async (req, res) => {
   try {
+
     const response = await axios.get(
-      "https://fakestoreapi.com/products"
+      "https://dummyjson.com/products",
+      {
+        headers: {
+          Accept: "application/json",
+          "User-Agent": "Mozilla/5.0",
+        },
+      }
     );
 
     res.status(200).json(response.data);
 
   } catch (error) {
+
     res.status(500).json({
       message: "Failed to fetch products",
       error: error.message,
     });
+
   }
 };
 
 // GET SINGLE PRODUCT
 const getProductById = async (req, res) => {
   try {
+
     const response = await axios.get(
-      `https://fakestoreapi.com/products/${req.params.id}`
+      `https://dummyjson.com/products/${req.params.id}`
     );
 
     res.status(200).json(response.data);
 
   } catch (error) {
+
     res.status(500).json({
       message: "Failed to fetch product",
       error: error.message,
     });
+
   }
 };
 
 // CREATE PRODUCT
 const createProduct = async (req, res) => {
   try {
+
     const response = await axios.post(
-      "https://fakestoreapi.com/products",
+      "https://dummyjson.com/products/add",
       {
         title: req.body.title,
         price: req.body.price,
         description: req.body.description,
-        image: req.body.image,
         category: req.body.category,
       }
     );
@@ -54,23 +66,25 @@ const createProduct = async (req, res) => {
     });
 
   } catch (error) {
+
     res.status(500).json({
       message: "Failed to create product",
       error: error.message,
     });
+
   }
 };
 
 // UPDATE PRODUCT
 const updateProduct = async (req, res) => {
   try {
+
     const response = await axios.put(
-      `https://fakestoreapi.com/products/${req.params.id}`,
+      `https://dummyjson.com/products/${req.params.id}`,
       {
         title: req.body.title,
         price: req.body.price,
         description: req.body.description,
-        image: req.body.image,
         category: req.body.category,
       }
     );
@@ -81,18 +95,21 @@ const updateProduct = async (req, res) => {
     });
 
   } catch (error) {
+
     res.status(500).json({
       message: "Failed to update product",
       error: error.message,
     });
+
   }
 };
 
 // DELETE PRODUCT
 const deleteProduct = async (req, res) => {
   try {
+
     const response = await axios.delete(
-      `https://fakestoreapi.com/products/${req.params.id}`
+      `https://dummyjson.com/products/${req.params.id}`
     );
 
     res.status(200).json({
@@ -101,10 +118,12 @@ const deleteProduct = async (req, res) => {
     });
 
   } catch (error) {
+
     res.status(500).json({
       message: "Failed to delete product",
       error: error.message,
     });
+
   }
 };
 
