@@ -38,7 +38,7 @@ const getProductById = async (req, res) => {
   } catch (error) {
 
     res.status(500).json({
-      message: "Failed to fetch product",
+      message: "Failed to fetch single product",
       error: error.message,
     });
 

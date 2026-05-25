@@ -10,6 +10,7 @@ const {
   deleteProduct,
 } = require("../controller/userController");
 
+
 // GET ALL PRODUCTS
 router.get("/", getProducts);
 
